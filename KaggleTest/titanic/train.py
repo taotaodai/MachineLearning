@@ -5,7 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from pandas import Series,DataFrame
 
-myfont = plt.font_manager.FontProperties(fname='C:\Windows\Fonts\simsunb.ttf')
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False
+
 pd.set_option('display.max_columns',None)
 data_train = pd.read_csv("train.csv")
 
@@ -32,7 +34,13 @@ fig.set(alpha=0.2)
 
 plt.subplot2grid((2,3),(0,0))
 data_train.Survived.value_counts().plot(kind="bar")
-plt.ylabel(u"获救情况 (1为获救)",fontproperties =myfont)
+plt.ylabel(u"获救情况 (1为获救)")
 plt.title(u"人数")
+
+plt.subplot2grid((2,3),(0,2))
+plt.scatter(data_train.Survived, data_train.Age)
+plt.ylabel(u"年龄")                         # 设定纵坐标名称
+plt.grid(b=True, which='major', axis='y') 
+plt.title(u"按年龄看获救分布 (1为获救)")
 
 plt.show()
