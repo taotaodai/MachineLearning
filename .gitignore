@@ -1,1 +1,3 @@
 *.csv
+/TianChiTest/DiscountCoupon/data/*.csv
+/TianChiTest/DiscountCoupon/result/*.csv
